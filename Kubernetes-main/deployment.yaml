@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: miweb
+  labels:
+    app: miweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: miweb
+  template:
+    metadata:
+      labels:
+        app: miweb
+    spec:
+      containers:
+        - name: miweb
+          # Si construís la imagen dentro de Minikube, con esto alcanza:
+          image: miweb:1.0
+          ports:
+            - containerPort: 80
